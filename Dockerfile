@@ -5,9 +5,9 @@ FROM alpine:latest
 
 RUN apk add --no-cache ca-certificates tzdata
 
-# 拷贝 xray 二进制和路由规则数据
-COPY --from=xray-source /usr/bin/xray /usr/local/bin/xray
-COPY --from=xray-source /usr/share/xray/ /usr/share/xray/
+# 官方镜像路径为 /usr/local/bin/xray 和 /usr/local/share/xray/
+COPY --from=xray-source /usr/local/bin/xray /usr/local/bin/xray
+COPY --from=xray-source /usr/local/share/xray/ /usr/local/share/xray/
 
 WORKDIR /etc/xray
 
